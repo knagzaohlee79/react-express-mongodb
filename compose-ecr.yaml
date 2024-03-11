@@ -1,0 +1,37 @@
+services:
+  frontend:
+    image: 430950558682.dkr.ecr.ap-southeast-1.amazonaws.com/devops-lab13-frontend:latest
+    ports:
+      - 3000:3000
+    stdin_open: true
+    restart: always
+    networks:
+      - react-express
+    depends_on:
+      - backend
+
+  backend:
+    restart: always
+    image: 430950558682.dkr.ecr.ap-southeast-1.amazonaws.com/devops-lab13-backend:latest
+    depends_on:
+      - mongo
+    networks:
+      - express-mongo
+      - react-express
+    expose: 
+      - 3000
+  mongo:
+    restart: always
+    image: mongo:4.2.0
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - express-mongo
+    expose:
+      - 27017
+networks:
+  react-express:
+  express-mongo:
+
+volumes:
+  mongo_data:
