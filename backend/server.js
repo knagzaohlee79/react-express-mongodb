@@ -24,10 +24,9 @@ app.use(express.static(path.join(__dirname, "public")));
 //  adding routes
 require("./routes")(app);
 
-app.on("ready", () => {
-  app.listen(3000, () => {
-    console.log("Server is up on port", 3000);
-  });
+const port = process.env.PORT || 3000; // Sử dụng cổng do Azure cung cấp, nếu không có thì dùng cổng mặc định 3000 cho local
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
 
 module.exports = app;
