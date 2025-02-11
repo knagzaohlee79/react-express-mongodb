@@ -18,7 +18,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`${API_BASE_URL}/todos`, {
+      .get(`${API_BASE_URL}`, {
         headers: { "Ocp-Apim-Subscription-Key": API_KEY },
       })
       .then((response) => {
@@ -32,7 +32,7 @@ export default class App extends React.Component {
   handleAddTodo = (value) => {
     axios
       .post(
-        `${API_BASE_URL}/todos`,
+        `${API_BASE_URL}`,
         { text: value },
         {
           headers: { "Ocp-Apim-Subscription-Key": API_KEY },
