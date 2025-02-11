@@ -27,7 +27,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "http://backend:3000",
+  "proxy": "https://poc-apim-knagzaoh.azure-api.net",
   "browserslist": {
     "production": [
       ">0.2%",
