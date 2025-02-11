@@ -1,10 +1,10 @@
 {
   "test":{
     "PORT": 3000,
-    "MONGODB_URI": "mongodb+srv://knagzaoh:<password>@poc-database.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
+    "MONGODB_URI": "mongodb+srv://knagzaoh:0704410140Aa@poc-database.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
   },
   "development":{
     "PORT": 3000,
-    "MONGODB_URI": "mongodb+srv://knagzaoh:<password>@poc-database.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
+    "MONGODB_URI": "mongodb+srv://knagzaoh:0704410140Aa@poc-database.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
   }
 }
