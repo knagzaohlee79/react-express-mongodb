@@ -15,7 +15,11 @@ export default class App extends React.Component {
 
   componentDidMount() {
     axios
-      .get("https://knagzaoh.azurewebsites.net/api")
+      .get(`${process.env.REACT_APP_API_URL}/api`, {
+        headers: {
+          "Ocp-Apim-Subscription-Key": process.env.REACT_APP_SUBSCRIPTION_KEY,
+        },
+      })
       .then((response) => {
         this.setState({
           todos: response.data.data,
@@ -26,7 +30,11 @@ export default class App extends React.Component {
 
   handleAddTodo = (value) => {
     axios
-      .post("https://knagzaoh.azurewebsites.net/api/todos", { text: value })
+      .post(`${process.env.REACT_APP_API_URL}/api/todos`, { text: value }, {
+        headers: {
+          "Ocp-Apim-Subscription-Key": process.env.REACT_APP_SUBSCRIPTION_KEY,
+        },
+      })
       .then(() => {
         this.setState({
           todos: [...this.state.todos, { text: value }],
