@@ -14,10 +14,11 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+    // Fetch todos from APIM
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api`, {
+      .get("https://poc-apim-knagzaoh.azure-api.net/api", {
         headers: {
-          "Ocp-Apim-Subscription-Key": process.env.REACT_APP_SUBSCRIPTION_KEY,
+          "Ocp-Apim-Subscription-Key": "76797dd100f84f619be00a8f595c5508",
         },
       })
       .then((response) => {
@@ -25,22 +26,27 @@ export default class App extends React.Component {
           todos: response.data.data,
         });
       })
-      .catch((e) => console.log("Error : ", e));
+      .catch((e) => console.error("Error while fetching todos: ", e));
   }
 
   handleAddTodo = (value) => {
+    // Post new todo to APIM
     axios
-      .post(`${process.env.REACT_APP_API_URL}/api/todos`, { text: value }, {
-        headers: {
-          "Ocp-Apim-Subscription-Key": process.env.REACT_APP_SUBSCRIPTION_KEY,
-        },
-      })
+      .post(
+        "https://poc-apim-knagzaoh.azure-api.net/api/todos",
+        { text: value },
+        {
+          headers: {
+            "Ocp-Apim-Subscription-Key": "76797dd100f84f619be00a8f595c5508",
+          },
+        }
+      )
       .then(() => {
         this.setState({
           todos: [...this.state.todos, { text: value }],
         });
       })
-      .catch((e) => console.log("Error : ", e));
+      .catch((e) => console.error("Error while adding a todo: ", e));
   };
 
   render() {
