@@ -15,7 +15,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     axios
-      .get("/api")
+      .get("https://knagzaoh.azurewebsites.net/api")
       .then((response) => {
         this.setState({
           todos: response.data.data,
@@ -26,7 +26,7 @@ export default class App extends React.Component {
 
   handleAddTodo = (value) => {
     axios
-      .post("/api/todos", { text: value })
+      .post("https://knagzaoh.azurewebsites.net/api/todos", { text: value })
       .then(() => {
         this.setState({
           todos: [...this.state.todos, { text: value }],
