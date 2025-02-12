@@ -4,9 +4,6 @@ import "./App.scss";
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
 
-const API_BASE_URL = "https://poc-apim-knagzaoh.azure-api.net"; // URL của APIM
-const API_KEY = "76797dd100f84f619be00a8f595c5508"; // Thay bằng key thật
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -18,32 +15,24 @@ export default class App extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`${API_BASE_URL}`, {
-        headers: { "Ocp-Apim-Subscription-Key": API_KEY },
-      })
+      .get("/api")
       .then((response) => {
         this.setState({
           todos: response.data.data,
         });
       })
-      .catch((e) => console.log("Error: ", e));
+      .catch((e) => console.log("Error : ", e));
   }
 
   handleAddTodo = (value) => {
     axios
-      .post(
-        `${API_BASE_URL}`,
-        { text: value },
-        {
-          headers: { "Ocp-Apim-Subscription-Key": API_KEY },
-        }
-      )
+      .post("/api/todos", { text: value })
       .then(() => {
         this.setState({
           todos: [...this.state.todos, { text: value }],
         });
       })
-      .catch((e) => console.log("Error: ", e));
+      .catch((e) => console.log("Error : ", e));
   };
 
   render() {
